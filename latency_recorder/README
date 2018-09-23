@@ -1,0 +1,9 @@
+LatencyRecorder
+
+es wrid mindestens JDK8 benötigt und am besten Maven
+
+im Package com.janas.backendtask.latency 
+	liegt meine refaktorierte Lösung
+	
+im Package com.janas.backendtask.latency.original 
+	liegt der original Code mit Kommentaren zum Code
