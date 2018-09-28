@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.partners.boundary;
+package com.janas.rewardssimulator.partners.entity;
 
 public enum PartnerLevel {
 	ANT(5),
@@ -11,5 +11,9 @@ public enum PartnerLevel {
 	
 	PartnerLevel(int reward) {
 		this.reward = reward;
+	}
+	
+	public int getReward() {
+		return reward;
 	}
 }

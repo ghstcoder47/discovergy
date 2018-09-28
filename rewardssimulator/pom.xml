@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.janas.rewardssimulator</groupId>
@@ -7,22 +9,16 @@
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
- 
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
-		<camel.version>2.22.1</camel.version>
+		<super.csv.version>2.4.0</super.csv.version>
 	</properties>
-	
+
 	<build>
 		<plugins>
-			
-			<plugin>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-maven-plugin</artifactId>
-      	<version>${camel.version}</version>
-			</plugin>
-			
+		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -32,10 +28,10 @@
 					<target>${java.version}</target>
 				</configuration>
 			</plugin>
-		
+
 		</plugins>
 	</build>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -44,19 +40,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-bindy</artifactId>
-			<version>${camel.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-core</artifactId>
-			<version>${camel.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.camel</groupId>
-			<artifactId>camel-spring</artifactId>
-			<version>${camel.version}</version>
-		</dependency>
+			<groupId>net.sf.supercsv</groupId>
+			<artifactId>super-csv</artifactId>
+			<version>${super.csv.version}</version>
+		</dependency>		
 	</dependencies>
 </project>
