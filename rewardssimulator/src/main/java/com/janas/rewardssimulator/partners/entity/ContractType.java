@@ -1,6 +1,6 @@
 package com.janas.rewardssimulator.partners.entity;
 
-enum ContractType {
+public enum ContractType {
 
 	TORTOISE(100), RABBIT(300);
 

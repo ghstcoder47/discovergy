@@ -3,8 +3,9 @@ package com.janas.rewardssimulator.partners.boundary;
 import java.util.stream.Stream;
 
 import org.supercsv.cellprocessor.ParseLong;
-import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
+
+import com.janas.rewardssimulator.business.csvutils.ParsePartnerLevel;
 
 public enum PartnerProcessor {
 	
@@ -18,7 +19,7 @@ public enum PartnerProcessor {
 			return new CellProcessor[] {
 					new ParseLong(), // partnerId;
 					new ParseLong(), // parentPartnerId;
-					new NotNull(), // levelType;
+					new ParsePartnerLevel(), // levelType;
 			};
 		}
 	};

@@ -2,7 +2,7 @@ package com.janas.rewardssimulator.business.partner.entity;
 
 import java.io.Serializable;
 
-import com.janas.rewardssimulator.partners.entity.PartnerLevel;
+import com.janas.rewardssimulator.business.sale.boundary.PartnerLevel;
 
 public class Partner implements Serializable {	
 	
@@ -17,24 +17,43 @@ public class Partner implements Serializable {
 		
 	}	
 	
+	public Partner(long partnerId, PartnerLevel level) {
+		super();
+		this.partnerId = partnerId;
+		this.level = level;
+	}
+		
+	public Partner(long partnerId, long parentPartnerId, PartnerLevel level) {
+		super();
+		this.partnerId = partnerId;
+		this.parentPartnerId = parentPartnerId;
+		this.level = level;
+	}
+
 	public long getPartnerId() {
 		return partnerId;
 	}
-	
+
 	public void setPartnerId(long partnerId) {
 		this.partnerId = partnerId;
 	}
-	
+
 	public long getParentPartnerId() {
-		return this.parentPartnerId;
+		return parentPartnerId;
 	}
-	
+
+	public void setParentPartnerId(long parentPartnerId) {
+		this.parentPartnerId = parentPartnerId;
+	}
+
 	public PartnerLevel getLevel() {
 		return level;
 	}
-	
+
 	public void setLevel(PartnerLevel level) {
 		this.level = level;
 	}
+
+	
 
 }

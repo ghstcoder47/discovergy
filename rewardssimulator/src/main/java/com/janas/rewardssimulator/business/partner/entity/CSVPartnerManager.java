@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.business.sale.boundary;
+package com.janas.rewardssimulator.business.partner.entity;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,26 +13,27 @@ import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 
-import com.janas.rewardssimulator.business.sale.entity.SalesRecord;
+import com.janas.rewardssimulator.partners.boundary.PartnerProcessor;
 
-public class CSVDataSalesRecordManager {
+public class CSVPartnerManager {
 	
-		
-	public static void save(List<SalesRecord> salesRecords) {
+	
+
+	public static void save(List<Partner> partners) {
 		
 		try (
 				ICsvBeanWriter beanWriter =	new CsvBeanWriter(
-						new FileWriter("salesReport.csv"),
+						new FileWriter("partner.csv"),
 						CsvPreference.STANDARD_PREFERENCE);
 				) {
 			
-			String[] headers = SalesRecordProcessor.WRITE.getHeader();
-			CellProcessor[] processors = SalesRecordProcessor.WRITE.getProcessors();
+			String[] headers = PartnerProcessor.READ_WRITE.getHeader();
+			CellProcessor[] processors = PartnerProcessor.READ_WRITE.getProcessors();
 			
 			beanWriter.writeHeader(headers);
 			
-			for (SalesRecord salesRecord : salesRecords) {
-	            beanWriter.write(salesRecord, headers, processors );
+			for (Partner partner : partners) {
+	            beanWriter.write(partner, headers, processors );
 	        }
 			
 		} catch (IOException e) {
@@ -40,24 +41,24 @@ public class CSVDataSalesRecordManager {
 		}
 	}
 	
-	public static List<SalesRecord> findAll() {
+	public static List<Partner> findAll() {
 		
-		List<SalesRecord> result = new ArrayList<>();
+		List<Partner> result = new ArrayList<>();
 		
 		try (
 				ICsvBeanReader beanReader = new CsvBeanReader(
-						new FileReader("salesReport.csv"), 
+						new FileReader("partner.csv"), 
 						CsvPreference.STANDARD_PREFERENCE);
 				) {
 			
 			final String[] header = beanReader.getHeader(true);
-            final CellProcessor[] processors = SalesRecordProcessor.READ.getProcessors();
+            final CellProcessor[] processors = PartnerProcessor.READ_WRITE.getProcessors();
             
-            SalesRecord salesRecord;
+            Partner partner;
             
-            while( null != ( salesRecord = beanReader.read(SalesRecord.class, header, processors) ) ) {
+            while( null != ( partner = beanReader.read(Partner.class, header, processors) ) ) {
             	
-            	result.add(salesRecord);
+            	result.add(partner);
             }
             
 		} catch (IOException e) {
@@ -67,5 +68,4 @@ public class CSVDataSalesRecordManager {
 		
 		return result;
 	}
-
 }

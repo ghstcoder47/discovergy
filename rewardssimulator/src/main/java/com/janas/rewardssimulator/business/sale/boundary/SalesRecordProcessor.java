@@ -8,6 +8,8 @@ import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
+import com.janas.rewardssimulator.business.csvutils.ParseContractType;
+
 /**
  * 
  * @author janasd
@@ -29,7 +31,7 @@ public enum SalesRecordProcessor {
 			return new CellProcessor[] {
 					new ParseLong(), // partnerId;
 					new ParseLong(), // contractId;
-					new NotNull(), // contractType;
+					new ParseContractType(), // contractType;
 					new FmtDate(DEFAULT_DATEFORMAT), // sellDate;
 					new NotNull() // action;	
 			};
@@ -45,7 +47,7 @@ public enum SalesRecordProcessor {
 			return new CellProcessor[] {
 					new ParseLong(), // partnerId;
 					new ParseLong(), // contractId;
-					new NotNull(), // contractType;
+					new ParseContractType(), // contractType;
 					new ParseDate(DEFAULT_DATEFORMAT), // sellDate;
 					new NotNull() // action;	
 			};
