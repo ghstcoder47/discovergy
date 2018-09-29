@@ -1,11 +1,11 @@
-package com.janas.rewardssimulator.partners.boundary;
+package com.janas.rewardssimulator.business.partner.boundary;
 
 import java.util.stream.Stream;
 
 import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
-import com.janas.rewardssimulator.business.csvutils.ParsePartnerLevel;
+import com.janas.rewardssimulator.business.partner.boundary.csvutils.ParsePartnerLevel;
 
 public enum PartnerProcessor {
 	

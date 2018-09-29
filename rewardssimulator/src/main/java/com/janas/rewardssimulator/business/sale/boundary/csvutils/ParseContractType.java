@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.business.csvutils;
+package com.janas.rewardssimulator.business.sale.boundary.csvutils;
 
 
 
@@ -7,7 +7,7 @@ import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.exception.SuperCsvCellProcessorException;
 import org.supercsv.util.CsvContext;
 
-import com.janas.rewardssimulator.partners.entity.ContractType;
+import com.janas.rewardssimulator.business.sale.boundary.ContractType;
 
 public class ParseContractType extends CellProcessorAdaptor {
     

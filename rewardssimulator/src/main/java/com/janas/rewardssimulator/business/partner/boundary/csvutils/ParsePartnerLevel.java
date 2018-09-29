@@ -1,11 +1,11 @@
-package com.janas.rewardssimulator.business.csvutils;
+package com.janas.rewardssimulator.business.partner.boundary.csvutils;
 
 import org.supercsv.cellprocessor.CellProcessorAdaptor;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.exception.SuperCsvCellProcessorException;
 import org.supercsv.util.CsvContext;
 
-import com.janas.rewardssimulator.business.sale.boundary.PartnerLevel;
+import com.janas.rewardssimulator.business.partner.boundary.PartnerLevel;
 
 public class ParsePartnerLevel extends CellProcessorAdaptor {
     

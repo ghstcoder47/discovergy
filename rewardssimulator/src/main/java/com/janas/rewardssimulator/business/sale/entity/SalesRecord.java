@@ -3,7 +3,7 @@ package com.janas.rewardssimulator.business.sale.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-import com.janas.rewardssimulator.partners.entity.ContractType;
+import com.janas.rewardssimulator.business.sale.boundary.ContractType;
 
 public class SalesRecord implements Serializable {
 		

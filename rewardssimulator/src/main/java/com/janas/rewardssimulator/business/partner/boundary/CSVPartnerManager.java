@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.business.partner.entity;
+package com.janas.rewardssimulator.business.partner.boundary;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,7 +13,7 @@ import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 
-import com.janas.rewardssimulator.partners.boundary.PartnerProcessor;
+import com.janas.rewardssimulator.business.partner.entity.Partner;
 
 public class CSVPartnerManager {
 	

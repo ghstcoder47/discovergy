@@ -8,7 +8,7 @@ import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
-import com.janas.rewardssimulator.business.csvutils.ParseContractType;
+import com.janas.rewardssimulator.business.sale.boundary.csvutils.ParseContractType;
 
 /**
  * 
@@ -16,7 +16,7 @@ import com.janas.rewardssimulator.business.csvutils.ParseContractType;
  *
  * CSVCellProcessor bietet CellProcessor Singletons
  * zum verarbeiten von CSV Daten 
- * für lesen und schreiben mit dem super CSV Framework
+ * fï¿½r lesen und schreiben mit dem super CSV Framework
  */
 
 public enum SalesRecordProcessor {

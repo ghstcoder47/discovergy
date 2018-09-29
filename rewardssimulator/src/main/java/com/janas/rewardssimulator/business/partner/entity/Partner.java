@@ -2,7 +2,7 @@ package com.janas.rewardssimulator.business.partner.entity;
 
 import java.io.Serializable;
 
-import com.janas.rewardssimulator.business.sale.boundary.PartnerLevel;
+import com.janas.rewardssimulator.business.partner.boundary.PartnerLevel;
 
 public class Partner implements Serializable {	
 	
