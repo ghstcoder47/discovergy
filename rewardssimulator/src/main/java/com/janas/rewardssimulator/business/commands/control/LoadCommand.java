@@ -1,10 +1,10 @@
-package com.janas.rewardssimulator;
+package com.janas.rewardssimulator.business.commands.control;
 
 import java.util.List;
 import java.util.StringTokenizer;
 
-import com.janas.rewardssimulator.business.sale.boundary.CSVDataSalesRecordManager;
-import com.janas.rewardssimulator.business.sale.entity.SalesRecord;
+import com.janas.rewardssimulator.business.sales.boundary.CSVDataSalesRecordManager;
+import com.janas.rewardssimulator.business.sales.entity.SalesRecord;
 
 public class LoadCommand {
 

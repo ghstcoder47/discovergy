@@ -1,15 +1,14 @@
-package com.janas.rewardssimulator.business.sale.boundary;
+package com.janas.rewardssimulator.business.sales.boundary;
 
 import java.util.stream.Stream;
 
 import org.supercsv.cellprocessor.FmtDate;
 import org.supercsv.cellprocessor.ParseDate;
 import org.supercsv.cellprocessor.ParseLong;
-import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
-import com.janas.rewardssimulator.business.sale.boundary.csvutils.ParseContractAction;
-import com.janas.rewardssimulator.business.sale.boundary.csvutils.ParseContractType;
+import com.janas.rewardssimulator.business.sales.boundary.csvutils.ParseContractAction;
+import com.janas.rewardssimulator.business.sales.boundary.csvutils.ParseContractType;
 
 /**
  * 

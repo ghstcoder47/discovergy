@@ -2,6 +2,8 @@ package com.janas.rewardssimulator;
 
 import java.util.Scanner;
 
+import com.janas.rewardssimulator.business.commands.control.CommandIdentifier;
+
 public class Main {
 
 	public static void main(String[] args) {

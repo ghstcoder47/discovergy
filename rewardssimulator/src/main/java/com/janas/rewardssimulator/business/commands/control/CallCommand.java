@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator;
+package com.janas.rewardssimulator.business.commands.control;
 
 import java.util.StringTokenizer;
 

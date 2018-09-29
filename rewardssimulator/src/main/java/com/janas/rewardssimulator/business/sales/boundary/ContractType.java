@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.business.sale.boundary;
+package com.janas.rewardssimulator.business.sales.boundary;
 
 public enum ContractType {
 

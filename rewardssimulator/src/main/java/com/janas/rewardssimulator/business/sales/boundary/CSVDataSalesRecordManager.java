@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.business.sale.boundary;
+package com.janas.rewardssimulator.business.sales.boundary;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -13,7 +13,7 @@ import org.supercsv.io.ICsvBeanReader;
 import org.supercsv.io.ICsvBeanWriter;
 import org.supercsv.prefs.CsvPreference;
 
-import com.janas.rewardssimulator.business.sale.entity.SalesRecord;
+import com.janas.rewardssimulator.business.sales.entity.SalesRecord;
 
 public class CSVDataSalesRecordManager {
 	

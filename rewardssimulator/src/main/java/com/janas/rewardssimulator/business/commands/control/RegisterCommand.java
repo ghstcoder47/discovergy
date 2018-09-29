@@ -1,11 +1,11 @@
-package com.janas.rewardssimulator;
+package com.janas.rewardssimulator.business.commands.control;
 
 import java.util.List;
 import java.util.StringTokenizer;
 
-import com.janas.rewardssimulator.business.partner.boundary.CSVPartnerManager;
-import com.janas.rewardssimulator.business.partner.boundary.PartnerLevel;
-import com.janas.rewardssimulator.business.partner.entity.Partner;
+import com.janas.rewardssimulator.business.partners.boundary.CSVPartnerManager;
+import com.janas.rewardssimulator.business.partners.boundary.PartnerLevel;
+import com.janas.rewardssimulator.business.partners.entity.Partner;
 
 public class RegisterCommand {
 

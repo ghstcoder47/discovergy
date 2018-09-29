@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.business.partner.boundary;
+package com.janas.rewardssimulator.business.partners.boundary;
 
 public enum PartnerLevel {
 	ANT(5),
