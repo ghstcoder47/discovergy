@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
@@ -68,5 +70,13 @@ public class CSVPartnerManager {
 		}
 		
 		return result;
+	}
+	
+	public static List<Partner> findSubPartners(long parentPartnerId) {
+		
+		return findAll()
+				.stream()
+				.filter(p -> p.getParentPartnerId() == parentPartnerId)
+				.collect(Collectors.toList());
 	}
 }

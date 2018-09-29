@@ -46,6 +46,15 @@ public class CSVDataSalesRecordManager {
 		
 	}
 	
+	public static long countSalesForPartner(long partnerId, int year, int quartal) {
+		return findAll().stream()
+				.filter(sale -> sale.getPartnerId() == partnerId 
+						&& sale.getSellDate().getYear() == year
+						&& sale.getSellDate().getMonth()+1 <= quartal
+						&& sale.getAction().equals(ContractAction.BEGIN))
+				.count();
+	}
+	
 	public static List<SalesRecord> findAll(String fileName) {
 		
 		List<SalesRecord> result = new ArrayList<>();

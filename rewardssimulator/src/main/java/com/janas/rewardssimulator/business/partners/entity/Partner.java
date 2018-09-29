@@ -10,32 +10,24 @@ public class Partner implements Serializable {
 
 	
 	long partnerId;	
-	long parentPartnerId;	
+	long parentPartnerId;
 	PartnerLevel level;
 	
 	public Partner() {
 		
 	}	
 	
-	public Partner(long partnerId, PartnerLevel level) {
+	public Partner(long partnerId) {
 		super();
 		this.partnerId = partnerId;
-		this.level = level;
+		this.level = PartnerLevel.ANT;
 	}
 		
-	public Partner(long partnerId, long parentPartnerId, PartnerLevel level) {
+	public Partner(long partnerId, long parentPartnerId) {
 		super();
 		this.partnerId = partnerId;
 		this.parentPartnerId = parentPartnerId;
-		this.level = level;
-	}
-
-	public long getPartnerId() {
-		return partnerId;
-	}
-
-	public void setPartnerId(long partnerId) {
-		this.partnerId = partnerId;
+		this.level = PartnerLevel.ANT;
 	}
 
 	public long getParentPartnerId() {
@@ -44,6 +36,14 @@ public class Partner implements Serializable {
 
 	public void setParentPartnerId(long parentPartnerId) {
 		this.parentPartnerId = parentPartnerId;
+	}
+
+	public long getPartnerId() {
+		return partnerId;
+	}
+
+	public void setPartnerId(long partnerId) {
+		this.partnerId = partnerId;
 	}
 
 	public PartnerLevel getLevel() {

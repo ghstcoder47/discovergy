@@ -12,7 +12,7 @@ public class LoadCommand {
 
 		String fileName = stringTokenizer.nextToken();
 		List<SalesRecord> salesRecords = CSVDataSalesRecordManager.findAll(fileName);
-		CSVDataSalesRecordManager.save(salesRecords);
+		CSVDataSalesRecordManager.save(salesRecords);			
 	}
 
 }
