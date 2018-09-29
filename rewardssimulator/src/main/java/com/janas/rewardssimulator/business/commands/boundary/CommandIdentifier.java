@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.business.commands.control;
+package com.janas.rewardssimulator.business.commands.boundary;
 
 import java.util.StringTokenizer;
 
