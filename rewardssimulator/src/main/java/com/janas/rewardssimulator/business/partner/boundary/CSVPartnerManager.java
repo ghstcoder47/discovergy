@@ -1,5 +1,6 @@
 package com.janas.rewardssimulator.business.partner.boundary;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -59,12 +60,12 @@ public class CSVPartnerManager {
             while( null != ( partner = beanReader.read(Partner.class, header, processors) ) ) {
             	
             	result.add(partner);
-            }
-            
+            }	
+		} catch (FileNotFoundException e) {
+			System.out.println("partner.csv wurde nicht gefunden und wird neu angelegt");
 		} catch (IOException e) {
-			
 			e.printStackTrace();
-		} 
+		}
 		
 		return result;
 	}

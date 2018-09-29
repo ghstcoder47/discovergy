@@ -42,11 +42,17 @@ public class CSVDataSalesRecordManager {
 	
 	public static List<SalesRecord> findAll() {
 		
+		return findAll("salesReport.csv");
+		
+	}
+	
+	public static List<SalesRecord> findAll(String fileName) {
+		
 		List<SalesRecord> result = new ArrayList<>();
 		
 		try (
 				ICsvBeanReader beanReader = new CsvBeanReader(
-						new FileReader("salesReport.csv"), 
+						new FileReader(fileName), 
 						CsvPreference.STANDARD_PREFERENCE);
 				) {
 			

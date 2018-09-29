@@ -1,21 +1,20 @@
 package com.janas.rewardssimulator.business.sale.boundary.csvutils;
 
-
-
 import org.supercsv.cellprocessor.CellProcessorAdaptor;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.exception.SuperCsvCellProcessorException;
 import org.supercsv.util.CsvContext;
 
+import com.janas.rewardssimulator.business.sale.boundary.ContractAction;
 import com.janas.rewardssimulator.business.sale.boundary.ContractType;
 
-public class ParseContractType extends CellProcessorAdaptor {
+public class ParseContractAction extends CellProcessorAdaptor {
     
-    public ParseContractType() {
+    public ParseContractAction() {
             super();
     }
     
-    public ParseContractType(CellProcessor next) {
+    public ParseContractAction(CellProcessor next) {
             // this constructor allows other processors to be chained after ParseDay
             super(next);
     }
@@ -24,14 +23,14 @@ public class ParseContractType extends CellProcessorAdaptor {
             
             validateInputNotNull(value, context);  // throws an Exception if the input is null
             
-            for (ContractType contractType : ContractType.values()){
-                    if (contractType.name().equalsIgnoreCase(value.toString())){
+            for (ContractAction contractAction : ContractAction.values()){
+                    if (contractAction.name().equalsIgnoreCase(value.toString())){
                            
-                            return next.execute(contractType, context);
+                            return next.execute(contractAction, context);
                     }
             }
             
             throw new SuperCsvCellProcessorException(
-                    String.format("Could not parse '%s' as a contractType", value), context, this);
+                    String.format("Could not parse '%s' as a contractAction", value), context, this);
     }
 }

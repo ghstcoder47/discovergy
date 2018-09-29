@@ -8,6 +8,7 @@ import org.supercsv.cellprocessor.ParseLong;
 import org.supercsv.cellprocessor.constraint.NotNull;
 import org.supercsv.cellprocessor.ift.CellProcessor;
 
+import com.janas.rewardssimulator.business.sale.boundary.csvutils.ParseContractAction;
 import com.janas.rewardssimulator.business.sale.boundary.csvutils.ParseContractType;
 
 /**
@@ -33,7 +34,7 @@ public enum SalesRecordProcessor {
 					new ParseLong(), // contractId;
 					new ParseContractType(), // contractType;
 					new FmtDate(DEFAULT_DATEFORMAT), // sellDate;
-					new NotNull() // action;	
+					new ParseContractAction() // action;	
 			};
 		}
 	}, 
@@ -49,12 +50,12 @@ public enum SalesRecordProcessor {
 					new ParseLong(), // contractId;
 					new ParseContractType(), // contractType;
 					new ParseDate(DEFAULT_DATEFORMAT), // sellDate;
-					new NotNull() // action;	
+					new ParseContractAction() // action;	
 			};
 		}
 	}; 
 	
-	public final String DEFAULT_DATEFORMAT = "dd.MM.yyyy";
+	public final String DEFAULT_DATEFORMAT = "yyyy-MM-dd";
 	
 	String[] header;
 				

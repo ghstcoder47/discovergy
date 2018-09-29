@@ -3,6 +3,7 @@ package com.janas.rewardssimulator.business.sale.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.janas.rewardssimulator.business.sale.boundary.ContractAction;
 import com.janas.rewardssimulator.business.sale.boundary.ContractType;
 
 public class SalesRecord implements Serializable {
@@ -14,13 +15,13 @@ public class SalesRecord implements Serializable {
 	private long contractId;
 	private ContractType contractType;
 	private Date sellDate;
-	private String action;
+	private ContractAction action;
 	
 	public SalesRecord() {
 		
 	}
 	
-	public SalesRecord(long partnerId, long contractId, ContractType contractType, Date sellDate, String action) {
+	public SalesRecord(long partnerId, long contractId, ContractType contractType, Date sellDate, ContractAction action) {
 		super();
 		this.partnerId = partnerId;
 		this.contractId = contractId;
@@ -55,10 +56,10 @@ public class SalesRecord implements Serializable {
 	public void setSellDate(Date sellDate) {
 		this.sellDate = sellDate;
 	}
-	public String getAction() {
+	public ContractAction getAction() {
 		return action;
 	}
-	public void setAction(String action) {
+	public void setAction(ContractAction action) {
 		this.action = action;
 	}
 	
