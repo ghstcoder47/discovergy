@@ -58,7 +58,7 @@ public class CSVDataSalesRecordManagerTest {
 		int count = CSVDataSalesRecordManager.findAll().size();
 		assertThat(count, equalTo(10));	
 		
-		long parentSales = CSVDataSalesRecordManager.countSalesForPartner(1, 2018, 3);
+		long parentSales = CSVDataSalesRecordManager.findSalesForPartner(1, 2018, 3).size();
 		assertThat(parentSales, equalTo(7L));	
 		assertThat(PartnerLevel.computeLevel(parentSales), equalTo(PartnerLevel.ANT));
 	}
@@ -73,7 +73,7 @@ public class CSVDataSalesRecordManagerTest {
 		salesRecords.add(new SalesRecord(1, 1,ContractType.RABBIT, Date.from(instant), ContractAction.BEGIN));
 		CSVDataSalesRecordManager.save(salesRecords);
 		
-		long count = CSVDataSalesRecordManager.countSalesForPartner(1, 2018, 3);
+		long count = CSVDataSalesRecordManager.findSalesForPartner(1, 2018, 3).size();
 		assertThat(count, equalTo(10L));	
 		assertThat(PartnerLevel.computeLevel(count), equalTo(PartnerLevel.BEE));
 	}

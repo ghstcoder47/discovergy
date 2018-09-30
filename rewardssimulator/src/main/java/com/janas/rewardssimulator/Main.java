@@ -24,12 +24,12 @@ public class Main {
 			
 			while(true) {
 				inputString = scanIn.nextLine();
-				
+							
 				if (inputString.equals("quit")) {
 					break;
 				}
 				
-				if (inputString.length() > 0) {					
+				if (inputString.length() > 0) {		
 					CommandIdentifier.identify(inputString);
 				}
 			}

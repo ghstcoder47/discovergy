@@ -6,7 +6,7 @@ import com.janas.rewardssimulator.business.commands.control.CallCommand;
 
 public class CommandIdentifier {
 
-	public static void identify(String inputString) {
+	public static void identify(String inputString) {	
 		
 		StringTokenizer stringTokenizer = new StringTokenizer(inputString, " ");
 		String method = stringTokenizer.nextToken();	

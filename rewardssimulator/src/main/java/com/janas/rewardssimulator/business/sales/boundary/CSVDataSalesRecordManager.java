@@ -4,10 +4,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.supercsv.cellprocessor.ift.CellProcessor;
 import org.supercsv.io.CsvBeanReader;
@@ -47,18 +52,26 @@ public class CSVDataSalesRecordManager {
 		return findAll("salesReport.csv");		
 	}
 	
-	public static long countSalesForPartner(long partnerId, int year, int quartal) {
+	public static List<SalesRecord> findSalesForPartner(long partnerId, int year, int quartal) {
 		
-		return findAll().stream()
-				.filter(sale -> sale.getPartnerId() == partnerId)
+		return findSalesForPartner(partnerId)
+				.stream()
 				.filter(sale -> {
 					Calendar calendar = new GregorianCalendar();
 					calendar.setTime(sale.getSellDate());
 					return calendar.get(Calendar.YEAR) <= year 
 							&& computeQuartal(calendar) <= quartal;
-				})
+					})
+				.collect(Collectors.toList());
+
+	}
+	
+	public static List<SalesRecord> findSalesForPartner(long partnerId) {
+		
+		return findAll().stream()
+				.filter(sale -> sale.getPartnerId() == partnerId)
 				.filter(sale -> sale.getAction().equals(ContractAction.BEGIN))
-				.count();
+				.collect(Collectors.toList());
 	}
 
 	private static int computeQuartal(Calendar calendar) {
@@ -92,6 +105,29 @@ public class CSVDataSalesRecordManager {
 		}
 		
 		return result;
+	}
+	
+	public static void updateSalesRecordActionStatus() {
+		
+
+		Date eightYearsAgo = eightYearsAgo();		
+		
+		List<SalesRecord> allSalesRecords = findAll();
+				
+		allSalesRecords.stream()
+		.filter( record -> {			
+			return record.getSellDate().before(eightYearsAgo);
+		})
+		.forEach(record -> record.setAction(ContractAction.END));
+		
+		CSVDataSalesRecordManager.save(allSalesRecords);
+	}
+
+	private static Date eightYearsAgo() {
+		Calendar cal = Calendar.getInstance();
+		cal.add(Calendar.YEAR, -8);
+		Date eightYearsAgo = cal.getTime();
+		return eightYearsAgo;
 	}
 
 }

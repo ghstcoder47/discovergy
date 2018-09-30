@@ -26,14 +26,14 @@ public class LevelCommand {
 			
 			for (Partner partner : subPartners) {
 				salesAmount += CSVDataSalesRecordManager
-						.countSalesForPartner(partner.getPartnerId(), year, quartal);
+						.findSalesForPartner(partner.getPartnerId(), year, quartal).size();
 			}
 			
 			System.out.println("sell ammount of subs: " + salesAmount);
 			
 			// ergänzt um partner sales
 			salesAmount += CSVDataSalesRecordManager
-					.countSalesForPartner(partnerId, year, quartal);
+					.findSalesForPartner(partnerId, year, quartal).size();
 			
 			System.out.println("sell ammount of all: " + salesAmount);
 						
