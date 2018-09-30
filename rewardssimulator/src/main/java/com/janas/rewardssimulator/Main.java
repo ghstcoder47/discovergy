@@ -13,6 +13,10 @@ public class Main {
 		System.out.println("REGISTER pId ppId");
 		System.out.println("LOAD fileName.csv");
 		System.out.println("REWARDS...");
+		System.out.println("LEVEL...");
+		System.out.println("SELL...");
+		System.out.println("quit");
+		System.out.println("============= ================ ===============");
 
 		String inputString;
 
@@ -29,29 +33,10 @@ public class Main {
 					CommandIdentifier.identify(inputString);
 				}
 			}
+			
+			
 		}
-
-//		Instant instant = LocalDateTime.now().toInstant(ZoneOffset.UTC);
-//
-//		List<SalesRecord> salesRecords = new ArrayList<>();		
-//		salesRecords.add(new SalesRecord(1, 1, ContractType.RABBIT, Date.from(instant), ContractAction.BEGIN));
-//		salesRecords.add(new SalesRecord(2, 2, ContractType.TORTOISE, Date.from(instant),ContractAction.BEGIN));
-//		salesRecords.add(new SalesRecord(1, 3, ContractType.TORTOISE, Date.from(instant), ContractAction.BEGIN));
-//
-//		List<Partner> partners = new ArrayList<>();
-//		partners.add(new Partner(1, PartnerLevel.ANT));
-//		partners.add(new Partner(2, PartnerLevel.BEE));
-//		partners.add(new Partner(3, 2, PartnerLevel.ANT));
-//
-//		CSVPartnerManager.save(partners);
-//
-//		CSVPartnerManager.findAll().stream().map(partner -> partner.getLevel()).forEach(System.out::println);
-//
-//		CSVDataSalesRecordManager.save(salesRecords);
-//
-//		CSVDataSalesRecordManager.findAll().stream().map(salesRecord -> salesRecord.getSellDate())
-//				.forEach(System.out::println);
-
+		
+		
 	}
-
 }

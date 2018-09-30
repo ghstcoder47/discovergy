@@ -4,8 +4,8 @@ import java.util.StringTokenizer;
 
 public class RewardsCommand {
 
-	public static void perform(StringTokenizer stringTokenizer) {
-		// TODO Auto-generated method stub
+	public static void perform(StringTokenizer command) {
+		
 		
 	}
 

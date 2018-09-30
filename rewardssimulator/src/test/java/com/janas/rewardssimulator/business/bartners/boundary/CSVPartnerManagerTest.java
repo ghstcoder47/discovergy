@@ -13,8 +13,7 @@ import com.janas.rewardssimulator.business.partners.boundary.CSVPartnerManager;
 import com.janas.rewardssimulator.business.partners.entity.Partner;
 
 public class CSVPartnerManagerTest {
-	
-	CSVPartnerManager cut;
+		
 	List<Partner> partners;
 	final int AMOUNT_OF_PARTNERS = 6;
 	

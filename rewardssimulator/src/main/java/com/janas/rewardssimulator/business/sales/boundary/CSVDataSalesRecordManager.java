@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.supercsv.cellprocessor.ift.CellProcessor;
@@ -42,17 +44,25 @@ public class CSVDataSalesRecordManager {
 	
 	public static List<SalesRecord> findAll() {
 		
-		return findAll("salesReport.csv");
-		
+		return findAll("salesReport.csv");		
 	}
 	
 	public static long countSalesForPartner(long partnerId, int year, int quartal) {
+		
 		return findAll().stream()
-				.filter(sale -> sale.getPartnerId() == partnerId 
-						&& sale.getSellDate().getYear() == year
-						&& sale.getSellDate().getMonth()+1 <= quartal
-						&& sale.getAction().equals(ContractAction.BEGIN))
+				.filter(sale -> sale.getPartnerId() == partnerId)
+				.filter(sale -> {
+					Calendar calendar = new GregorianCalendar();
+					calendar.setTime(sale.getSellDate());
+					return calendar.get(Calendar.YEAR) <= year 
+							&& computeQuartal(calendar) <= quartal;
+				})
+				.filter(sale -> sale.getAction().equals(ContractAction.BEGIN))
 				.count();
+	}
+
+	private static int computeQuartal(Calendar calendar) {
+		return ((calendar.get(Calendar.MONTH)) / 3) + 1;
 	}
 	
 	public static List<SalesRecord> findAll(String fileName) {
