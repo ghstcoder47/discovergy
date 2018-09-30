@@ -7,6 +7,12 @@ import com.janas.rewardssimulator.business.commands.boundary.CommandIdentifier;
 public class Main {
 
 	public static void main(String[] args) {
+		
+		System.out.println("============= rewardssimulator ===============");
+		System.out.println("REGISTER pId");
+		System.out.println("REGISTER pId ppId");
+		System.out.println("LOAD fileName.csv");
+		System.out.println("REWARDS...");
 
 		String inputString;
 

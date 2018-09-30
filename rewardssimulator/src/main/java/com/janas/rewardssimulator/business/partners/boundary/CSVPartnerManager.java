@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.supercsv.cellprocessor.ift.CellProcessor;
@@ -64,7 +63,7 @@ public class CSVPartnerManager {
             	result.add(partner);
             }	
 		} catch (FileNotFoundException e) {
-			System.out.println("partner.csv wurde nicht gefunden und wird neu angelegt");
+			System.out.println("salesReport.csv wurde nicht gefunden und wird neu angelegt");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

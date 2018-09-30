@@ -1,5 +1,6 @@
 package com.janas.rewardssimulator.business.sales.boundary;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,10 +34,9 @@ public class CSVDataSalesRecordManager {
 			
 			for (SalesRecord salesRecord : salesRecords) {
 	            beanWriter.write(salesRecord, headers, processors );
-	        }
-			
+	        }	
 		} catch (IOException e) {
-			e.printStackTrace();
+			e.printStackTrace();			
 		}
 	}
 	
@@ -75,10 +75,11 @@ public class CSVDataSalesRecordManager {
             	result.add(salesRecord);
             }
             
+		} catch (FileNotFoundException e) {
+			System.out.println("partner.csv wurde nicht gefunden und wird neu angelegt");
 		} catch (IOException e) {
-			
 			e.printStackTrace();
-		} 
+		}
 		
 		return result;
 	}
