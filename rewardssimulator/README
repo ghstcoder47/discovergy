@@ -1,0 +1,12 @@
+für die Anwendung wird JDK8 und Maven benötigt
+
+build:
+- mvn clean install
+
+hier werden JUnits ausgeführt, diese erzeugen eine "partner.csv" und eine "salesReport.csv"
+um die Anwendung bei null zu starten unbedingt die beiden dateien entfernen oder den Build ohne JUnit ausführen:
+- mvn clean install -DskipTests
+
+
+um die Anwendung in Eclipse zu importieren muss ein eclipse Projekt erzeugt werden:
+- mvn clean install eclipse:eclipse
