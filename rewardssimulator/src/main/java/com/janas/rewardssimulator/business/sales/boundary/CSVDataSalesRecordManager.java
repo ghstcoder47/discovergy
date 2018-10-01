@@ -6,7 +6,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,7 +56,8 @@ public class CSVDataSalesRecordManager {
 					Calendar calendar = new GregorianCalendar();
 					calendar.setTime(sale.getSellDate());
 					return calendar.get(Calendar.YEAR) <= year 
-							&& computeQuartal(calendar) <= quartal;
+							&& calendar.get(Calendar.YEAR) > (year -8)
+							&& computeQuartal(calendar) == quartal;
 					})
 				.collect(Collectors.toList());
 
@@ -104,27 +104,27 @@ public class CSVDataSalesRecordManager {
 		return result;
 	}
 	
-	public static void updateSalesRecordActionStatus() {
-		
-
-		Date eightYearsAgo = eightYearsAgo();		
-		
-		List<SalesRecord> allSalesRecords = findAll();
-				
-		allSalesRecords.stream()
-		.filter( record -> {			
-			return record.getSellDate().before(eightYearsAgo);
-		})
-		.forEach(record -> record.setAction(ContractAction.END));
-		
-		CSVDataSalesRecordManager.save(allSalesRecords);
-	}
-
-	private static Date eightYearsAgo() {
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.YEAR, -8);
-		Date eightYearsAgo = cal.getTime();
-		return eightYearsAgo;
-	}
+//	public static void updateSalesRecordActionStatus() {
+//		
+//
+//		Date eightYearsAgo = eightYearsAgo();		
+//		
+//		List<SalesRecord> allSalesRecords = findAll();
+//				
+//		allSalesRecords.stream()
+//		.filter( record -> {			
+//			return record.getSellDate().before(eightYearsAgo);
+//		})
+//		.forEach(record -> record.setAction(ContractAction.END));
+//		
+//		CSVDataSalesRecordManager.save(allSalesRecords);
+//	}
+//
+//	private static Date eightYearsAgo() {
+//		Calendar cal = Calendar.getInstance();
+//		cal.add(Calendar.YEAR, -8);
+//		Date eightYearsAgo = cal.getTime();
+//		return eightYearsAgo;
+//	}
 
 }

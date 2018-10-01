@@ -1,13 +1,16 @@
 package com.janas.rewardssimulator.business.interaction.control;
 
-import java.util.ArrayList;
+import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.StringTokenizer;
-import java.util.stream.Collectors;
 
 import com.janas.rewardssimulator.business.partners.boundary.CSVPartnerManager;
+import com.janas.rewardssimulator.business.partners.boundary.PartnerLevel;
 import com.janas.rewardssimulator.business.partners.entity.Partner;
 import com.janas.rewardssimulator.business.sales.boundary.CSVDataSalesRecordManager;
 import com.janas.rewardssimulator.business.sales.entity.SalesRecord;
@@ -17,93 +20,85 @@ public class RewardsCommand {
 	public static void perform(StringTokenizer command) {
 		
 		if (command.countTokens() == 1) {
-			/**
-			 * pid
-			 */
+			
 			long pid = Long.parseLong(command.nextToken());
 			
 			List<Partner> subPartners = CSVPartnerManager.findSubPartners(pid);
 			
-			List<SalesRecord> subPartnerSalesRecords = null;
-			
-			//sub partners salesRecords
-			for (Partner partner : subPartners) {
-				subPartnerSalesRecords = CSVDataSalesRecordManager
-						.findSalesForPartner(partner.getPartnerId());
-			}
-			
-			//own salesRecords
-			List<SalesRecord> salesRecords = CSVDataSalesRecordManager
-					.findSalesForPartner(pid);
-			
-			//alle salesRecords
-			salesRecords.addAll(subPartnerSalesRecords);
+			List<SalesRecord> salesRecords = CSVDataSalesRecordManager.findSalesForPartner(pid);			
+			subPartners.stream()
+				.forEach(p -> {
+					salesRecords.addAll(CSVDataSalesRecordManager.findSalesForPartner(p.getPartnerId()));
+				});
 			
 			
-			/**
-			 * Calendar calendar = new GregorianCalendar();
-				calendar.setTime(sale.getSellDate());
-				return calendar.get(Calendar.YEAR) <= year
-			 */
+			Calendar calendar = new GregorianCalendar();
+			SalesRecord firstRecord = salesRecords.get(0);	
 			
-			do {
-				
-				
-				
-			} while(true);
+			int initialYear = getInitialYear(calendar, firstRecord);
 			
+			int currentYear = getYearIntervallEnd(calendar);
 			
+			initialYear = printPartnersRewards(pid, subPartners, initialYear, currentYear);
 			
-			//year quarter rewards
-			//year quarter rewards
-			
-			
-			//get all subParners
-			
-			// count rewards by subPartners
-			
-			// count my rewards
-			//sum all
 		}
 		
 		if (command.countTokens() == 3) {
-			/**
-			 * pid year quarter
-			 */
-			
+						
 			long pid = Long.parseLong(command.nextToken());
 			int year = Integer.parseInt(command.nextToken());
 			int quarter = Integer.parseInt(command.nextToken());
 			
 			List<Partner> subPartners = CSVPartnerManager.findSubPartners(pid);
-			List<SalesRecord> subPartnerSalesRecords = new ArrayList<>();
+			List<SalesRecord> salesRecords = CSVDataSalesRecordManager.findSalesForPartner(pid, year, quarter);
 			
-			Calendar calendar = new GregorianCalendar();
-			subPartners.stream()
-				.forEach( sp -> {
-					subPartnerSalesRecords.addAll(CSVDataSalesRecordManager
-							.findSalesForPartner(sp.getPartnerId())
-								.stream()
-								.filter( record -> {
-									
-									
-									calendar.setTime(record.getSellDate());
-									return calendar.get(Calendar.YEAR) <= year
-											&& computeQuarter(calendar) <= quarter;
-								})
-								.collect(Collectors.toList())
-							);
-				});
-			
-			
-			//subPartnerSalesRecords
-			
+			printRewardsForParicularTime(year, quarter, subPartners, salesRecords);
 			
 		}
 	}
-	
-	private static int computeQuarter(Calendar calendar) {
-		return ((calendar.get(Calendar.MONTH)) / 3) + 1;
+
+	private static void printRewardsForParicularTime(int year, int quarter, List<Partner> subPartners,
+			List<SalesRecord> salesRecords) {
+		subPartners.stream()
+			.forEach(p -> {
+				salesRecords.addAll(CSVDataSalesRecordManager.findSalesForPartner(p.getPartnerId(), year, quarter));
+			});
+		
+		long rewards = PartnerLevel.computeLevel(salesRecords.size()).getReward() * salesRecords.size();
+		
+		System.out.println(rewards);
+	}
+
+	private static int printPartnersRewards(long pid, List<Partner> subPartners, int initialYear, int currentYear) {
+		for(;initialYear<= currentYear; initialYear++) {
+							
+			for (int quarter = 1; quarter < 5; quarter ++) {
+				List<SalesRecord> tmpSalesRecords = CSVDataSalesRecordManager.findSalesForPartner(pid, initialYear, quarter);
+				
+				for(Partner partner : subPartners) {
+					tmpSalesRecords.addAll(CSVDataSalesRecordManager.findSalesForPartner(partner.getPartnerId(), initialYear, quarter));
+				}
+				
+				
+				long rewards = PartnerLevel.computeLevel(tmpSalesRecords.size()).getReward() * tmpSalesRecords.size();
+				
+				System.out.println(initialYear + " " + quarter + " " + rewards);
+			}
+		}
+		return initialYear;
+	}
+
+	private static int getInitialYear(Calendar calendar, SalesRecord firstRecord) {
+		calendar.setTime(firstRecord.getSellDate());			
+		int initialYear = calendar.get(Calendar.YEAR);
+		return initialYear;
+	}
+
+	private static int getYearIntervallEnd(Calendar calendar) {
+		Instant instant = LocalDateTime.now().toInstant(ZoneOffset.UTC);
+		calendar.setTime(Date.from(instant));			
+		int currentYear = calendar.get(Calendar.YEAR);
+		return currentYear;
 	}
 
 }

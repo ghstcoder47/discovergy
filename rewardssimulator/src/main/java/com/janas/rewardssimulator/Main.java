@@ -9,12 +9,13 @@ public class Main {
 	public static void main(String[] args) {
 		
 		System.out.println("============= rewardssimulator ===============");
-		System.out.println("REGISTER pId");
-		System.out.println("REGISTER pId ppId");
-		System.out.println("LOAD fileName.csv");
-		System.out.println("REWARDS...");
-		System.out.println("LEVEL...");
-		System.out.println("SELL...");
+		System.out.println("REGISTER pId 		 	-> register Partner");
+		System.out.println("REGISTER pId ppId  		-> register Partner with Parent Partner");
+		System.out.println("LOAD fileName.csv 		-> load report File by its name");
+		System.out.println("REWARDS pid year quarter   	-> print Rewards for Partner for the given year and quarter");
+		System.out.println("REWARDS pid   			-> print all Rewards for Partner");
+		System.out.println("LEVEL pid year quarter  	-> print partners level for given year and quarter");
+		System.out.println("SELL pid cid cType  		-> sell new Contract");
 		System.out.println("quit");
 		System.out.println("============= ================ ===============");
 
@@ -34,9 +35,7 @@ public class Main {
 				}
 			}
 			
-			
 		}
-		
 		
 	}
 }
