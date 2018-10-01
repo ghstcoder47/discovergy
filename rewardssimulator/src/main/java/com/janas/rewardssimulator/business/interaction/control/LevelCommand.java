@@ -29,14 +29,8 @@ public class LevelCommand {
 						.findSalesForPartner(partner.getPartnerId(), year, quartal).size();
 			}
 			
-			System.out.println("sell ammount of subs: " + salesAmount);
-			
-			// ergänzt um partner sales
 			salesAmount += CSVDataSalesRecordManager
 					.findSalesForPartner(partnerId, year, quartal).size();
-			
-			System.out.println("sell ammount of all: " + salesAmount);
-						
 			
 			System.out.println(PartnerLevel.computeLevel(salesAmount));
 			
