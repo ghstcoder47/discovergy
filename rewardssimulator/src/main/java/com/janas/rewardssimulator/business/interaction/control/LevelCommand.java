@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.business.partners.control;
+package com.janas.rewardssimulator.business.interaction.control;
 
 import java.util.List;
 import java.util.StringTokenizer;
@@ -12,8 +12,8 @@ public class LevelCommand {
 	
 	private static final int EXPECTED_COMAND_COUNT = 3;
 
-	public static void perform(StringTokenizer stringTokenizer) {		
-		
+	public static void perform(StringTokenizer stringTokenizer) {	
+				
 		if (stringTokenizer.countTokens() == EXPECTED_COMAND_COUNT) {
 			
 			long partnerId = Long.parseLong(stringTokenizer.nextToken());
@@ -43,7 +43,7 @@ public class LevelCommand {
 		} else {
 			System.out.println("LEVEL command nicht korrekt: " + stringTokenizer.toString());
 		}
-		
+				
 		
 	}
 

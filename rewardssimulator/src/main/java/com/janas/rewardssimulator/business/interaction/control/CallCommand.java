@@ -2,12 +2,6 @@ package com.janas.rewardssimulator.business.interaction.control;
 
 import java.util.StringTokenizer;
 
-import com.janas.rewardssimulator.business.partners.control.LevelCommand;
-import com.janas.rewardssimulator.business.partners.control.RegisterCommand;
-import com.janas.rewardssimulator.business.partners.control.RewardsCommand;
-import com.janas.rewardssimulator.business.sales.control.LoadCommand;
-import com.janas.rewardssimulator.business.sales.control.SellCommand;
-
 public enum CallCommand {
 	REGISTER {
 		@Override
