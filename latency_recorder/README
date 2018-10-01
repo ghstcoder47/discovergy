@@ -7,3 +7,10 @@ im Package com.janas.backendtask.latency
 	
 im Package com.janas.backendtask.latency.original 
 	liegt der original Code mit Kommentaren zum Code
+	
+
+Build:
+- mvn clean install
+
+eclipse projekt erzeugen:
+- mvn clean install eclipse:eclipse
