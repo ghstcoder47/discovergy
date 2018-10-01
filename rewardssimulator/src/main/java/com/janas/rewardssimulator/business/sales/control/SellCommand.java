@@ -1,4 +1,4 @@
-package com.janas.rewardssimulator.business.commands.control;
+package com.janas.rewardssimulator.business.sales.control;
 
 import java.sql.Date;
 import java.time.Instant;

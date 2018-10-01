@@ -2,7 +2,7 @@ package com.janas.rewardssimulator;
 
 import java.util.Scanner;
 
-import com.janas.rewardssimulator.business.commands.boundary.CommandIdentifier;
+import com.janas.rewardssimulator.business.interaction.boundary.CommandIdentifier;
 
 public class Main {
 

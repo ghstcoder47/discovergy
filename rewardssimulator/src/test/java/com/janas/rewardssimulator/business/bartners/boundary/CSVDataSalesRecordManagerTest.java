@@ -27,15 +27,6 @@ public class CSVDataSalesRecordManagerTest {
 	@Before
 	public void init() {
 		
-//		Path fileToBeDeleted = Paths.get("salesReport.csv");
-//		if (fileToBeDeleted.toFile().exists()) {			
-//			try {
-//				Files.delete(fileToBeDeleted);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
-//		}
-		
 		salesRecords = new ArrayList<>();
 		
 		salesRecords.add(new SalesRecord(1, 1,ContractType.RABBIT, Date.from(instant), ContractAction.BEGIN));
@@ -58,7 +49,7 @@ public class CSVDataSalesRecordManagerTest {
 		int count = CSVDataSalesRecordManager.findAll().size();
 		assertThat(count, equalTo(10));	
 		
-		long parentSales = CSVDataSalesRecordManager.findSalesForPartner(1, 2018, 3).size();
+		long parentSales = CSVDataSalesRecordManager.findSalesForPartner(1, 2018, 4).size();
 		assertThat(parentSales, equalTo(7L));	
 		assertThat(PartnerLevel.computeLevel(parentSales), equalTo(PartnerLevel.ANT));
 	}
@@ -73,7 +64,7 @@ public class CSVDataSalesRecordManagerTest {
 		salesRecords.add(new SalesRecord(1, 1,ContractType.RABBIT, Date.from(instant), ContractAction.BEGIN));
 		CSVDataSalesRecordManager.save(salesRecords);
 		
-		long count = CSVDataSalesRecordManager.findSalesForPartner(1, 2018, 3).size();
+		long count = CSVDataSalesRecordManager.findSalesForPartner(1, 2018, 4).size();
 		assertThat(count, equalTo(10L));	
 		assertThat(PartnerLevel.computeLevel(count), equalTo(PartnerLevel.BEE));
 	}

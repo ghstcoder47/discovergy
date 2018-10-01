@@ -1,8 +1,8 @@
-package com.janas.rewardssimulator.business.commands.boundary;
+package com.janas.rewardssimulator.business.interaction.boundary;
 
 import java.util.StringTokenizer;
 
-import com.janas.rewardssimulator.business.commands.control.CallCommand;
+import com.janas.rewardssimulator.business.interaction.control.CallCommand;
 
 public class CommandIdentifier {
 
